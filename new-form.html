@@ -1,26 +1,34 @@
-<form>
+<form class="form_for_section_179">
     <div class="first-section">
         <p class="section-tax">Section 179 Tax Deduction</p>
     </div>
     <div class="second-section">
         <label class="label_cost" for="cost_of_equipment">Cost of Equipment</label>
-        <input type="text" id="cost_of_equipment_input_field" placeholder="Enter Amount" class="input_cost_of_equip">
+        <input type="text" id="cost_of_equipment_input_field" placeholder="$ Enter Amount" class="input_cost_of_equip">
     </div>
     <div class="third-section">
         <p>Section 179 Deduction</p>
+        <h4 class="form0">1000</h4>
         <p>Total First Year Deduction</p>
+        <h4 class="form1">10000</h4>
     </div>
     <hr>
     <div class="fourth-section">
         <h4 class="cash_savings">Cash Savings on your Purchase</h4>
+        <h4 class="form2">1000</h4>
         <p class="assuming-text">Assuming a 35% tax bracket</p>
     </div>
     <div class="lowered_cost">
         <h3 class="lowered_cost_h3">Lowered Cost of Equipment</h3>
+        <h4 class="form3">1000</h4>
     </div>
 </form>
 
 <style>
+    span {
+        display: inline;
+    }
+
     hr {
         width: 85%;
         color: lightgrey;
@@ -35,6 +43,7 @@
         margin-bottom: 3;
         margin-top: 0;
         text-align: right;
+
     }
 
     form {
@@ -106,3 +115,17 @@
         text-align: right;
     }
 </style>
+
+<script>
+    let form = document.querySelector(".form_for_section_179")
+    form.addEventListener("submit", getData)
+
+    function getData(e) {
+        e.preventDefault()
+        let first_header = document.querySelector(".form0")
+        let second_header = document.querySelector(".form1")
+        first_header.innerHTML = document.querySelector(".input_cost_of_equip").value
+        second_header.innerHTML = document.querySelector(".input_cost_of_equip").value
+
+    }
+</script>

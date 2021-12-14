@@ -4,23 +4,28 @@
     </div>
     <div class="second-section">
         <label class="label_cost" for="cost_of_equipment">Cost of Equipment</label>
-        <input type="text" id="cost_of_equipment_input_field" placeholder="$ Enter Amount" class="input_cost_of_equip">
+        <input type="number" id="cost_of_equipment_input_field" placeholder="$ Enter Amount"
+            class="input_cost_of_equip">
     </div>
     <div class="third-section">
         <p>Section 179 Deduction</p>
-        <h4 class="form0">1000</h4>
-        <p>Total First Year Deduction</p>
-        <h4 class="form1">10000</h4>
     </div>
+    <h4 class="form0"></h4>
+    <div class="third-section">
+        <p>Total First Year Deduction</p>
+    </div>
+    <h4 class="form1"></h4>
     <hr>
     <div class="fourth-section">
-        <h4 class="cash_savings">Cash Savings on your Purchase</h4>
-        <h4 class="form2">1000</h4>
+        <h3 class="cash_savings">Cash Savings on your Purchase</h3>
         <p class="assuming-text">Assuming a 35% tax bracket</p>
     </div>
-    <div class="lowered_cost">
-        <h3 class="lowered_cost_h3">Lowered Cost of Equipment</h3>
-        <h4 class="form3">1000</h4>
+    <h4 class="form2"></h4>
+    <div class="newDiv">
+        <div class="lowered_cost">
+            <h3 class="lowered_cost_h3">Lowered Cost of Equipment</h3>
+        </div>
+        <h4 class="form3"></h4>
     </div>
 </form>
 
@@ -32,6 +37,19 @@
     hr {
         width: 85%;
         color: lightgrey;
+    }
+
+    .newDiv {
+        background-color: red;
+    }
+
+    .form3 {
+        color: white;
+    }
+
+    h4 {
+        float: right;
+        padding: 10px 20px 10px 5px
     }
 
     .section-tax {
@@ -73,7 +91,8 @@
         font-weight: bold;
         padding: 10px;
         text-align: right;
-        width: 60%;
+        width: 40%;
+        display: inline-block;
 
     }
 
@@ -81,6 +100,7 @@
         text-align: left;
         padding: 10px;
         width: 60%;
+        display: inline-block;
     }
 
     .assuming-text {
@@ -106,6 +126,9 @@
     .lowered_cost {
         background-color: red;
         padding: 5px 20px;
+        display: inline-block;
+        width: 60%;
+
 
     }
 
@@ -114,18 +137,31 @@
         width: 60%;
         text-align: right;
     }
+
+    @media (max-width: 987px) {
+        .lowered_cost {
+            display: block;
+        }
+    }
 </style>
 
 <script>
     let form = document.querySelector(".form_for_section_179")
+    let first_head = document.querySelector(".input_cost_of_equip")
     form.addEventListener("submit", getData)
 
     function getData(e) {
         e.preventDefault()
         let first_header = document.querySelector(".form0")
         let second_header = document.querySelector(".form1")
+        let third_header = document.querySelector(".form2")
+        let fourth_header = document.querySelector(".form3")
         first_header.innerHTML = document.querySelector(".input_cost_of_equip").value
         second_header.innerHTML = document.querySelector(".input_cost_of_equip").value
-
+        let savings = first_head.value * .35
+        console.log(savings)
+        let total = first_head.value - savings
+        third_header.innerHTML = savings
+        fourth_header.innerHTML = total
     }
 </script>
